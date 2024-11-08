@@ -4,14 +4,24 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const router = useRouter();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle login logic here
-    console.log("Login attempt with:", email, password);
+    console.log("Login attempt with:", formData);
   };
 
   return (
@@ -31,10 +41,11 @@ const Login = () => {
             <input
               type="email"
               id="email"
+              name="email"
               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
               placeholder="Enter Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleChange}
               required
               autoComplete="off"
             />
@@ -49,10 +60,11 @@ const Login = () => {
             <input
               type="password"
               id="password"
+              name="password"
               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
               placeholder="Enter Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleChange}
               required
               autoComplete="off"
             />
@@ -66,7 +78,7 @@ const Login = () => {
             </button>
             <button
               type="button"
-              onClick={() => router.push("/register")}
+              onClick={() => router.push("/patient-register")}
               className="text-gray-800 py-2 px-4 rounded-md hover:underline focus:outline-none flex-grow ml-2 text-xs"
             >
               Create an account?

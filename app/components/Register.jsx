@@ -4,23 +4,27 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [gender, setGender] = useState("");
-  const [age, setAge] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    fullName: "",
+    gender: "",
+    age: "",
+    password: "",
+  });
   const router = useRouter();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle registration logic here
-    console.log("Registration attempt with:", {
-      email,
-      fullName,
-      gender,
-      age,
-      password,
-    });
+    console.log("Registration attempt with:", formData);
   };
 
   return (
@@ -40,10 +44,11 @@ const Register = () => {
             <input
               type="email"
               id="email"
+              name="email"
               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
               placeholder="Enter Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleChange}
               required
               autoComplete="off"
             />
@@ -58,10 +63,11 @@ const Register = () => {
             <input
               type="text"
               id="fullName"
+              name="fullName"
               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
               placeholder="Enter Full Name"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              value={formData.fullName}
+              onChange={handleChange}
               required
               autoComplete="off"
             />
@@ -77,10 +83,11 @@ const Register = () => {
             <input
               type="password"
               id="password"
+              name="password"
               className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
               placeholder="Enter Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleChange}
               required
               autoComplete="off"
             />
@@ -95,8 +102,8 @@ const Register = () => {
                   className="form-radio"
                   name="gender"
                   value="male"
-                  checked={gender === "male"}
-                  onChange={(e) => setGender(e.target.value)}
+                  checked={formData.gender === "male"}
+                  onChange={handleChange}
                 />
                 <span className="ml-2">Male</span>
               </label>
@@ -106,8 +113,8 @@ const Register = () => {
                   className="form-radio"
                   name="gender"
                   value="female"
-                  checked={gender === "female"}
-                  onChange={(e) => setGender(e.target.value)}
+                  checked={formData.gender === "female"}
+                  onChange={handleChange}
                 />
                 <span className="ml-2">Female</span>
               </label>
@@ -117,8 +124,8 @@ const Register = () => {
                   className="form-radio"
                   name="gender"
                   value="other"
-                  checked={gender === "other"}
-                  onChange={(e) => setGender(e.target.value)}
+                  checked={formData.gender === "other"}
+                  onChange={handleChange}
                 />
                 <span className="ml-2">Other</span>
               </label>
@@ -133,9 +140,10 @@ const Register = () => {
             </label>
             <select
               id="age"
+              name="age"
               className="mt-1 block p-2 w-[32%] bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none text-gray-800"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
+              value={formData.age}
+              onChange={handleChange}
               required
             >
               <option value="">Select Age</option>
@@ -156,7 +164,7 @@ const Register = () => {
             </button>
             <button
               type="button"
-              onClick={() => router.push("/login")}
+              onClick={() => router.push("/patient-login")}
               className="w-1/2 text-gray-800 py-2 px-4 rounded-md hover:underline focus:outline-none text-xs ml-4"
             >
               Already Have an Account?
