@@ -8,7 +8,7 @@ const DoctorDashboard = () => {
     {
       id: 1,
       patientName: "Sahana Shetty",
-      email: "sahant@gmail.com",
+      email: "sahana@gmail.com",
       date: "2024-10-18",
       time: "10:45",
       type: "Virtual",
@@ -47,7 +47,9 @@ const DoctorDashboard = () => {
     },
   ];
 
-  const [scheduleData, setScheduleData] = useState(initialScheduleData.map(schedule => ({...schedule, status: false})));
+  const [scheduleData, setScheduleData] = useState(
+    initialScheduleData.map((schedule) => ({ ...schedule, status: false }))
+  );
 
   // Sort scheduleData based on date and time
   const sortedScheduleData = [...scheduleData].sort((a, b) => {
@@ -57,9 +59,11 @@ const DoctorDashboard = () => {
   });
 
   const toggleStatus = (id) => {
-    setScheduleData(prevData =>
-      prevData.map(schedule =>
-        schedule.id === id ? { ...schedule, status: !schedule.status } : schedule
+    setScheduleData((prevData) =>
+      prevData.map((schedule) =>
+        schedule.id === id
+          ? { ...schedule, status: !schedule.status }
+          : schedule
       )
     );
   };
@@ -67,7 +71,7 @@ const DoctorDashboard = () => {
   return (
     <div className="mx-auto px-6 py-8 bg-gray-900">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl ">Dr. Munna Bhai</h2>
+        <h2 className="text-2xl ">Dr. Munna Bhai, MBBS</h2>
         <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded">
           Logout
         </button>
