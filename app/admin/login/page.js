@@ -1,9 +1,9 @@
-import Register from "../components/Register";
+import AdminLogin from "../../components/Admin/AdminLogin";
 
 export default function RegisterPage() {
   return (
     <div>
-      <Register />
+      <AdminLogin />
     </div>
   );
 }

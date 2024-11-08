@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const Register = () => {
+const PatientRegister = () => {
   const [formData, setFormData] = useState({
-    email: "",
-    fullName: "",
-    gender: "",
-    age: "",
-    password: "",
+    patientEmail: "",
+    patientFullName: "",
+    patientGender: "",
+    patientAge: "",
+    patientPassword: "",
   });
   const router = useRouter();
 
@@ -24,30 +24,30 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle registration logic here
-    console.log("Registration attempt with:", formData);
+    console.log("Patient Registration attempt with:", formData);
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900">
-      <div className="bg-white p-8 rounded-lg shadow-md w-[30%]">
-        <h2 className="text-2xl text-center mb-6 text-green-600">
-          Patient SignUp
+    <div className="flex items-center justify-center min-h-screen bg-gray-900 px-4">
+      <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 className="text-2xl sm:text-3xl text-center mb-6 text-green-600 font-semibold">
+          Patient Sign Up
         </h2>
-        <form onSubmit={handleSubmit} className="">
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
               Email
             </label>
             <input
               type="email"
-              id="email"
-              name="email"
-              className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
+              id="patientEmail"
+              name="patientEmail"
+              className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
               placeholder="Enter Email"
-              value={formData.email}
+              value={formData.patientEmail}
               onChange={handleChange}
               required
               autoComplete="off"
@@ -56,37 +56,37 @@ const Register = () => {
           <div className="mb-4">
             <label
               htmlFor="fullName"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
               Full Name
             </label>
             <input
               type="text"
-              id="fullName"
-              name="fullName"
-              className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
+              id="patientFullName"
+              name="patientFullName"
+              className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
               placeholder="Enter Full Name"
-              value={formData.fullName}
+              value={formData.patientFullName}
               onChange={handleChange}
               required
               autoComplete="off"
             />
           </div>
 
-          <div className="mb-6">
+          <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
               Create Password
             </label>
             <input
               type="password"
-              id="password"
-              name="password"
-              className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
+              id="patientPassword"
+              name="patientPassword"
+              className="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
               placeholder="Enter Password"
-              value={formData.password}
+              value={formData.patientPassword}
               onChange={handleChange}
               required
               autoComplete="off"
@@ -94,55 +94,55 @@ const Register = () => {
           </div>
 
           <div className="mb-4 text-gray-700">
-            <label className="block text-sm font-medium ">Gender</label>
-            <div className="mt-1 flex">
-              <label className="inline-flex items-center mr-4">
+            <label className="block text-sm font-medium mb-1">Gender</label>
+            <div className="flex flex-wrap">
+              <label className="inline-flex items-center mr-4 mb-2">
                 <input
                   type="radio"
                   className="form-radio"
-                  name="gender"
+                  name="patientGender"
                   value="male"
-                  checked={formData.gender === "male"}
+                  checked={formData.patientGender === "male"}
                   onChange={handleChange}
                 />
                 <span className="ml-2">Male</span>
               </label>
-              <label className="inline-flex items-center mr-4">
+              <label className="inline-flex items-center mr-4 mb-2">
                 <input
                   type="radio"
                   className="form-radio"
-                  name="gender"
+                  name="patientGender"
                   value="female"
-                  checked={formData.gender === "female"}
+                  checked={formData.patientGender === "female"}
                   onChange={handleChange}
                 />
                 <span className="ml-2">Female</span>
               </label>
-              <label className="inline-flex items-center">
+              <label className="inline-flex items-center mb-2">
                 <input
                   type="radio"
                   className="form-radio"
-                  name="gender"
+                  name="patientGender"
                   value="other"
-                  checked={formData.gender === "other"}
+                  checked={formData.patientGender === "other"}
                   onChange={handleChange}
                 />
                 <span className="ml-2">Other</span>
               </label>
             </div>
           </div>
-          <div className="mb-4">
+          <div className="mb-6">
             <label
               htmlFor="age"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-gray-700 mb-1"
             >
               Age
             </label>
             <select
-              id="age"
-              name="age"
-              className="mt-1 block p-2 w-[32%] bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none text-gray-800"
-              value={formData.age}
+              id="patientAge"
+              name="patientAge"
+              className="w-[40%] px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 text-gray-800"
+              value={formData.patientAge}
               onChange={handleChange}
               required
             >
@@ -155,17 +155,17 @@ const Register = () => {
             </select>
           </div>
 
-          <div className="flex flex-row items-center justify-between">
+          <div className="flex items-center justify-between">
             <button
               type="submit"
-              className="w-1/2 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+              className="w-[48%] bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 text-sm"
             >
               Sign Up
             </button>
             <button
               type="button"
-              onClick={() => router.push("/patient-login")}
-              className="w-1/2 text-gray-800 py-2 px-4 rounded-md hover:underline focus:outline-none text-xs ml-4"
+              onClick={() => router.push("/patient/login")}
+              className="w-[48%] text-gray-800 py-2 px-4 rounded-md hover:underline focus:outline-none text-xs"
             >
               Already Have an Account?
             </button>
@@ -176,4 +176,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default PatientRegister;
