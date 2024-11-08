@@ -158,14 +158,14 @@ const PatientRegister = () => {
           <div className="flex items-center justify-between">
             <button
               type="submit"
-              className="w-[48%] bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 text-sm"
+              className="w-[30%] bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 text-sm"
             >
               Sign Up
             </button>
             <button
               type="button"
               onClick={() => router.push("/patient/login")}
-              className="w-[48%] text-gray-800 py-2 px-4 rounded-md hover:underline focus:outline-none text-xs"
+              className="w-[60%] text-gray-800 py-2 px-4 rounded-md hover:underline focus:outline-none text-xs"
             >
               Already Have an Account?
             </button>

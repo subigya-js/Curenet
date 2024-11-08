@@ -72,7 +72,7 @@ const PatientLogin = () => {
           <div className="flex items-center justify-between">
             <button
               type="submit"
-              className="w-[48%] bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 text-sm"
+              className="w-[30%] bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 text-sm"
             >
               Log In
             </button>
@@ -81,7 +81,7 @@ const PatientLogin = () => {
               onClick={() => router.push("/patient/register")}
               className="w-[48%] text-gray-800 py-2 px-4 rounded-md hover:underline focus:outline-none text-xs"
             >
-              Create an account
+              Create an account?
             </button>
           </div>
         </form>
